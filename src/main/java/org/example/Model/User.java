@@ -11,8 +11,9 @@ public class User {
     private int id;
     private String firstName;
     private String lastName;
-    private Gender gender;
     private String email;
+    private String password;
+    private Gender gender;
     private Date BirthDay;
     private double height;
     private double weight;
@@ -20,8 +21,8 @@ public class User {
 
     // Constructor
 
-    public User(int id, String firstName, String lastName, String email, Gender gender, Date birthDay, double height, double weight, Fitness_Goal goal) {
-        this(id, firstName, lastName, email);
+    public User(int id, String firstName, String lastName, String email, String password, Gender gender, Date birthDay, double height, double weight, Fitness_Goal goal) {
+        this(id, firstName, lastName, email, password);
         setGender(gender);
         setBirthDay(birthDay);
         setHeight(height);
@@ -29,11 +30,12 @@ public class User {
         setFitnessGoal(goal);
     }
 
-    public User(int id, String firstName, String lastName, String email) {
+    public User(int id, String firstName, String lastName, String email, String password) {
        setId(id);
         setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
+        setPassword(password);
     }
 
 
@@ -50,13 +52,18 @@ public class User {
         return lastName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
     public Gender getGender() {
         return gender;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
     public Date getBirthDay() {
         return BirthDay;
@@ -90,16 +97,21 @@ public class User {
         this.lastName = lastName;
     }
 
+    public void setEmail(String email) {
+        Objects.requireNonNull(email, "Email missing.");
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public void setGender(Gender gender) {
         // can be null, but in that case
         // todo: add this question in for nutrition advice function to generate advice
         this.gender = gender;
     }
 
-    public void setEmail(String email) {
-        Objects.requireNonNull(email, "Email missing.");
-        this.email = email;
-    }
 
     public void setBirthDay(Date birthDay) {
         // can be null, but in that case
